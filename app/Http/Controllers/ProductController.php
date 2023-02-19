@@ -42,7 +42,7 @@ class ProductController extends Controller
             'img' => 'required|mimes:jpg,png,svg,jpeg'
         ]);
 
-        $imgName = Str::random(20) . '.' . $request->img->getClientOriginalExtension();
+        $imgName = Str::random(20) . '.' . $request->file('img')->getClientOriginalExtension();
         $request->file('img')->storeAs('public/uploads/solution', $imgName);
 
         $product = Product::create([
